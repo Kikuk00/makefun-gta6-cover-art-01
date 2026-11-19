@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Neon Coast Cover Studio — GTA-style poster maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-sun" aria-hidden="true"></span>
+    <div>
+      <h1>Neon Coast Cover Studio</h1>
+      <p>Your photo + a caption = a poster-style cover. Photos never leave your computer.</p>
+    </div>
+  </div>
+  <p class="steps"><strong>1</strong> Add photos &nbsp;→&nbsp; <strong>2</strong> Pick a layout &amp; grade &nbsp;→&nbsp; <strong>3</strong> Write the caption &nbsp;→&nbsp; <strong>4</strong> Export PNG</p>
+</header>
+
+<main class="workspace">
+  <aside class="controls" aria-label="Cover controls">
+
+    <section class="group" aria-label="Photos">
+      <h2>1 · Photos</h2>
+      <p class="hint">Add up to three of your own photos, or try the samples.</p>
+      <div class="slot" data-slot="0">
+        <span class="slot-name">Photo 1 — empty</span>
+        <label class="file-btn">Choose a photo <input type="file" accept="image/*"></label>
+        <div class="sample-row">
+          <button type="button" data-sample="pier">Sample: pier</button>
+          <button type="button" data-sample="boulevard">Sample: boulevard</button>
+        </div>
+      </div>
+      <div class="slot" data-slot="1">
+        <span class="slot-name">Photo 2 — empty</span>
+        <label class="file-btn">Choose a photo <input type="file" accept="image/*"></label>
+        <div class="sample-row">
+          <button type="button" data-sample="pier">Sample: pier</button>
+          <button type="button" data-sample="boulevard">Sample: boulevard</button>
+        </div>
+      </div>
+      <div class="slot" data-slot="2">
+        <span class="slot-name">Photo 3 — empty</span>
+        <label class="file-btn">Choose a photo <input type="file" accept="image/*"></label>
+        <div class="sample-row">
+          <button type="button" data-sample="pier">Sample: pier</button>
+          <button type="button" data-sample="boulevard">Sample: boulevard</button>
+        </div>
+      </div>
+      <button id="fill" type="button" class="secondary">Fill all panels with my photos</button>
+    </section>
+
+    <section class="group" aria-label="Layout">
+      <h2>2 · Layout</h2>
+      <div id="layout-pick" class="pick-row" role="group" aria-label="Panel layout"></div>
+    </section>
+
+    <section class="group" aria-label="Colour grade">
+      <h2>3 · Colour grade</h2>
+      <div class="grade-row">
+        <div id="grade-pick" class="swatches" role="group" aria-label="Colour grade"></div>
+        <span id="grade-name" class="grade-name">Vice Sunset</span>
+      </div>
+    </section>
+
+    <section class="group" aria-label="Caption">
+      <h2>4 · Caption</h2>
+      <label>Title
+        <input id="title" type="text" maxlength="28" value="NEON COAST">
+      </label>
+      <label>Subtitle
+        <input id="subtitle" type="text" maxlength="60" value="a sunset heist in three panels">
+      </label>
+      <label>Title size <span id="title-scale-val">100%</span>
+        <input id="title-scale" type="range" min="0.7" max="1.3" step="0.05" value="1">
+      </label>
+    </section>
+
+    <section class="group" aria-label="Selected panel">
+      <h2>5 · Selected panel</h2>
+      <p id="panel-note" class="hint"></p>
+      <div id="panel-pick" class="pick-row" role="group" aria-label="Choose a panel"></div>
+      <label>Photo in this panel
+        <select id="panel-photo">
+          <option value="0">Photo 1</option>
+          <option value="1">Photo 2</option>
+          <option value="2">Photo 3</option>
+          <option value="-1">None — gradient panel</option>
+        </select>
+      </label>
+      <label>Zoom <span id="zoom-val">100%</span>
+        <input id="panel-zoom" type="range" min="1" max="2.5" step="0.05" value="1">
+      </label>
+      <label>Move left / right <span id="x-val">0.00</span>
+        <input id="panel-x" type="range" min="-0.5" max="0.5" step="0.05" value="0">
+      </label>
+      <label>Move up / down <span id="y-val">0.00</span>
+        <input id="panel-y" type="range" min="-0.5" max="0.5" step="0.05" value="0">
+      </label>
+      <button id="panel-reset" type="button" class="secondary">Reset this panel's crop</button>
+    </section>
+
+    <section class="group" aria-label="Export">
+      <h2>6 · Export</h2>
+      <div id="size-pick" class="pick-row" role="group" aria-label="Post size"></div>
+      <button id="export" type="button" class="primary">Export PNG</button>
+      <button id="shuffle" type="button" class="secondary">Shuffle the look</button>
+      <p id="status" role="status">Add a photo to begin — or try a sample.</p>
+    </section>
+  </aside>
+
+  <section class="stage" aria-label="Live preview">
+    <canvas id="preview" width="760" height="760" aria-label="Live cover preview"></canvas>
+    <p class="stage-hint">Live preview — click a panel to select it, drag to move its photo, scroll over it to zoom.</p>
+  </section>
+</main>
+
+<footer class="footnote">
+  <p>Original art made on your machine. No Rockstar Games logo, artwork or font — the lettering is a system bold face and the sun emblem is drawn in code.</p>
+</footer>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
